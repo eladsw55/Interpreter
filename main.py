@@ -1,6 +1,5 @@
 import re
 
-# --- Token specification ---
 TOKEN_SPECS = [
     # Keywords (use word boundaries so DEFINE doesn't match part of a longer identifier)
     ('DEFINE', r'\bDEFINE\b'),
@@ -11,11 +10,11 @@ TOKEN_SPECS = [
     ('WHILE', r'\bWHILE\b'),
     ('PRINT', r'\bSHOW\b'),
 
-    # Literals
+  
     ('NUMBER', r'\d+(\.\d+)?'),
     ('STRING', r'"(?:\\.|[^"\\])*"'),
 
-    # Operators / punctuation
+    # Operators 
     ('COMPARE', r'==|!=|<=|>=|<|>'),  # must come BEFORE ASSIGN
     ('ASSIGN', r'='),
 
@@ -29,7 +28,7 @@ TOKEN_SPECS = [
     ('CLOSE_CURLY', r'\}'),
     ('COMMA', r','),
 
-    # Identifiers (after keywords so keywords are not treated as IDs)
+    # Identifiers 
     ('ID', r'[A-Za-z_][A-Za-z0-9_]*'),
 
     # Whitespace
@@ -44,7 +43,7 @@ class MyInterpreter:
         self.tokens = []
         self.current = 0
 
-        # Pre-compile token regexes once (performance + cleaner)
+        
         self.compiled_specs = [(name, re.compile(pattern)) for name, pattern in TOKEN_SPECS]
 
     def tokenize(self, code: str):
@@ -77,7 +76,7 @@ class MyInterpreter:
         while self.current < len(self.tokens) and self.tokens[self.current][0] != 'EOF':
             self.parse_and_run()
 
-    # ---------- Parsing helpers ----------
+    
     def peek(self):
         if self.current >= len(self.tokens):
             return ('EOF', '')
@@ -90,7 +89,7 @@ class MyInterpreter:
         self.current += 1
         return tok
 
-    # ---------- Statements ----------
+    
     def parse_and_run(self):
         if self.current >= len(self.tokens):
             return
@@ -117,10 +116,10 @@ class MyInterpreter:
                 self.consume('END')
             return
 
-        # Unknown token at statement-level: skip it (or raise if you prefer strict mode)
+        
         self.current += 1
 
-    # ---------- Expression evaluation ----------
+    
     def get_atom_value(self):
         tok_type, value = self.peek()
 
