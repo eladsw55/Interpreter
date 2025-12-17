@@ -1,1 +1,11 @@
-This project is a custom-built, lightweight interpreter developed in Python that processes a unique scripting language. It features a robust Lexer that uses regular expressions to tokenize input and a recursive-descent Parser designed to handle complex mathematical expressions with correct operator precedence (calculating multiplication and division before addition and subtraction). The interpreter supports variable assignment via the SET keyword, string concatenation, and real-time output using a custom SHOW() function. It serves as a practical demonstration of core computer science concepts such as lexical analysis, syntactic parsing, and memory management through a global variable state.
+This project is a custom-built, lightweight interpreter written in Python for a simple scripting language.
+
+It includes a robust Lexer based on regular expressions and a recursive-descent Parser that evaluates mathematical expressions with correct operator precedence (multiplication and division before addition and subtraction).
+
+The interpreter supports:
+- Variable assignment using the `SET` keyword
+- Arithmetic expressions with parentheses
+- String literals and string concatenation
+- Real-time output via a custom `SHOW()` function
+
+This project demonstrates hands-on implementation of core computer science concepts such as **lexical analysis**, **syntactic parsing**, **expression evaluation**, and **memory management** using a global variable state.
